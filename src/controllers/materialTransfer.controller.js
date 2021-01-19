@@ -266,7 +266,7 @@ module.exports = class MaterialTransferContoller {
                 }
     
                 //AÑADIMOS 
-                await MaterialStock.update({ materialQuantity: (materialStockReceptor.materialQuantity + materialQuantity), updatedAt: new Date()}, {
+                await MaterialStock.update({ materialQuantity: (parseInt(materialStockReceptor.materialQuantity) + parseInt(materialQuantity)), updatedAt: new Date()}, {
                     where: {
                         materialStockId: materialStockReceptor.materialStockId
                     }
@@ -274,7 +274,7 @@ module.exports = class MaterialTransferContoller {
     
                 const newMaterialStockRecordEntry = await MaterialStockRecord.create({
                     materialStockId: materialStockReceptor.materialStockId,
-                    materialBalance: (oldMaterialStockRecordEntry.materialBalance + materialQuantity),
+                    materialBalance: (parseInt(oldMaterialStockRecordEntry.materialBalance) + parseInt(materialQuantity)),
                     modificationTypeId: ModificationTypeEnum.traslado_ingreso,
                     modificationQuantity: materialQuantity                
                 });

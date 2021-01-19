@@ -192,7 +192,7 @@ module.exports = class MaterialPurchaseContoller {
                     //         msg: 'No se encontró un balance anterior del material indicado!'
                     //     });
                     // } 
-                    await MaterialStock.update({ materialQuantity: (materialStockExist.materialQuantity + m.materialQuantity), updatedAt: new Date()}, {
+                    await MaterialStock.update({ materialQuantity: (parseInt(materialStockExist.materialQuantity) + parseInt(m.materialQuantity)), updatedAt: new Date()}, {
                         where: {
                             materialStockId: materialStockExist.materialStockId
                         }
@@ -200,7 +200,7 @@ module.exports = class MaterialPurchaseContoller {
         
                     const newMaterialStockRecord = await MaterialStockRecord.create({
                         materialStockId: materialStockExist.materialStockId,
-                        materialBalance: (oldMaterialStockRecord.materialBalance + m.materialQuantity),
+                        materialBalance: (parseInt(oldMaterialStockRecord.materialBalance) + parseInt(m.materialQuantity)),
                         modificationTypeId: ModificationTypeEnum.compra,
                         modificationQuantity: m.materialQuantity                
                     }); 

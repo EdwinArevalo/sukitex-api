@@ -221,7 +221,7 @@ module.exports = class ProductPurchaseContoller {
                     //         msg: 'No se encontró un balance anterior de la variante del producto indicado!'
                     //     });
                     // }
-                    await ProductStock.update({ productQuantity: (productStockExist.productQuantity + p.productQuantity), updatedAt: new Date()}, {
+                    await ProductStock.update({ productQuantity: (parseInt(productStockExist.productQuantity) + parseInt(p.productQuantity)), updatedAt: new Date()}, {
                         where: {
                             productStockId: productStockExist.productStockId
                         }
@@ -229,7 +229,7 @@ module.exports = class ProductPurchaseContoller {
         
                     const newProductStockRecord = await ProductStockRecord.create({
                         productStockId: productStockExist.productStockId,
-                        productBalance: (oldProductStockRecord.productBalance + p.productQuantity),
+                        productBalance: (parseInt(oldProductStockRecord.productBalance) + parseInt(p.productQuantity)),
                         modificationTypeId: ModificationTypeEnum.compra,
                         modificationQuantity: p.productQuantity                
                     }); 

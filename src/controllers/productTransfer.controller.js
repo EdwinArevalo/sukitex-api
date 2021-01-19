@@ -294,7 +294,7 @@ module.exports = class ProductTransferContoller {
                 }
     
                 //AÑADIMOS 
-                await ProductStock.update({ productQuantity: (productStockReceptor.productQuantity + productQuantity), updatedAt: new Date()}, {
+                await ProductStock.update({ productQuantity: (parseInt(productStockReceptor.productQuantity) + parseInt(productQuantity)), updatedAt: new Date()}, {
                     where: {
                         productStockId: productStockReceptor.productStockId
                     }
@@ -302,7 +302,7 @@ module.exports = class ProductTransferContoller {
     
                 const newProductStockRecordEntry = await ProductStockRecord.create({
                     productStockId: productStockReceptor.productStockId,
-                    productBalance: (oldProductStockRecordEntry.productBalance + productQuantity),
+                    productBalance: (parseInt(oldProductStockRecordEntry.productBalance) + parseInt(productQuantity)),
                     modificationTypeId: ModificationTypeEnum.traslado_ingreso,
                     modificationQuantity: productQuantity                
                 });
