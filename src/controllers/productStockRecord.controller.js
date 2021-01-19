@@ -228,9 +228,9 @@ module.exports = class ProductStockRecordContoller {
                         model: ProductStock,
                         include: [{
                             model: ProductVariant,
-                            include: [Product]
+                            include: [Product,Size,Color]
                         },
-                        Warehouse]
+                        Warehouse ]
                     }
                 ],
                 order: [
@@ -250,7 +250,7 @@ module.exports = class ProductStockRecordContoller {
                     return;
                 }
                 stockId = x.productStockId;
-                initialBalanceList.push({warehouseName: x.ProductStock.Warehouse.warehouseName,warehouseId: x.ProductStock.warehouseId, productStockRecordId: x.productStockRecordId,productStockId: x.productStockId, productName:x.ProductStock.ProductVariant.Product.productName, initialBalance:x.productBalance});                
+                initialBalanceList.push({warehouseName: x.ProductStock.Warehouse.warehouseName,warehouseId: x.ProductStock.warehouseId, productStockRecordId: x.productStockRecordId,productStockId: x.productStockId, productSize: x.ProductStock.ProductVariant.Size.sizeName ,productColor:  x.ProductStock.ProductVariant.Color.colorName , productName:x.ProductStock.ProductVariant.Product.productName, initialBalance:x.productBalance});                
             });
 
             const currentBalanceQuery = await ProductStockRecord.findAll({
@@ -266,8 +266,9 @@ module.exports = class ProductStockRecordContoller {
                         model: ProductStock,
                         include: [{
                             model: ProductVariant,
-                            include: [Product]
-                        }]
+                            include: [Product,Size,Color]
+                        },
+                        Warehouse ]
                     }
                 ],
                 order: [

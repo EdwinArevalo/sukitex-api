@@ -211,7 +211,7 @@ module.exports = class MaterialStockRecordContoller {
                     ModificationType,
                     {
                         model: MaterialStock,
-                        include: [ Material, Warehouse]
+                        include: [ Material, Warehouse,Provider,Unit]
                     }
                 ],
                 order: [
@@ -231,7 +231,7 @@ module.exports = class MaterialStockRecordContoller {
                     return;
                 }
                 stockId = x.materialStockId;
-                initialBalanceList.push({warehouseName: x.MaterialStock.Warehouse.warehouseName,warehouseId: x.MaterialStock.warehouseId, materialStockRecordId: x.materialStockRecordId,materialStockId: x.materialStockId, materialName:x.MaterialStock.Material.materialName, initialBalance:x.materialBalance});                
+                initialBalanceList.push({warehouseName: x.MaterialStock.Warehouse.warehouseName,warehouseId: x.MaterialStock.warehouseId, materialStockRecordId: x.materialStockRecordId,materialStockId: x.materialStockId, materialUnit: x.MaterialStock.Unit.unitName, materialProvider: x.MaterialStock.Provider.providerNames+" "+x.MaterialStock.Provider.providerSurnames, materialName:x.MaterialStock.Material.materialName, initialBalance:x.materialBalance});                
             });
 
             const currentBalanceQuery = await MaterialStockRecord.findAll({
@@ -245,7 +245,7 @@ module.exports = class MaterialStockRecordContoller {
                     ModificationType,
                     {
                         model: MaterialStock,
-                        include: [ Material, Warehouse]
+                        include: [ Material, Warehouse,Provider,Unit]
                     }
                 ],
                 order: [
