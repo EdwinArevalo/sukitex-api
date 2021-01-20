@@ -188,6 +188,9 @@ module.exports = class ProductStockRecordContoller {
                 inputList.push(element.dataValues);
             });
 
+            console.log('Inicialessssssss')
+            console.log(inputList)
+
             const groupingOutputs = await ProductStockRecord.findAll({
                 attributes: [
                     'productStockRecordId',
