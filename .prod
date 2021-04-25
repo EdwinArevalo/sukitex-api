@@ -1,0 +1,6 @@
+DB_HOST=sukitexdatabase.cmljbcsdwr6j.us-east-1.rds.amazonaws.com
+DB_USER=admin
+DB_PASS=sukitexdatabasekey
+DB_NAME=sukitexdatabase
+
+SECRET_KEY=$sktxapi$

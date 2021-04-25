@@ -188,8 +188,8 @@ module.exports = class ProductStockRecordContoller {
                 inputList.push(element.dataValues);
             });
 
-            console.log('Inicialessssssss')
-            console.log(inputList)
+            // console.log('Inicialessssssss')
+            // console.log(inputList)
 
             const groupingOutputs = await ProductStockRecord.findAll({
                 attributes: [
@@ -336,7 +336,7 @@ module.exports = class ProductStockRecordContoller {
                 }
             }
 
-            console.log(firstDay + ' ' + endDay)
+            // console.log(firstDay + ' ' + endDay)
 
             return res.json({code: 200, kardex}); 
           
