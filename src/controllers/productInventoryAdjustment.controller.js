@@ -174,7 +174,7 @@ module.exports = class ProductInventoryAdjustmentContoller {
             });
 
             if (oldProductStockRecord == null){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'No se encontró un balance anterior de la variante del producto indicado!'
                 });
@@ -188,7 +188,7 @@ module.exports = class ProductInventoryAdjustmentContoller {
             }
 
             if (oldProductStockRecord.productBalance < productQuantity){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'Balance de la variante del producto indicado inecxacto!'
                 });

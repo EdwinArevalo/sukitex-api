@@ -170,7 +170,7 @@ module.exports = class MaterialTransferContoller {
             });
 
             if (oldMaterialStockRecordDeparture == null){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'No se encontró un balance anterior de este material de origen!'
                 });
@@ -184,7 +184,7 @@ module.exports = class MaterialTransferContoller {
             }
 
             if (oldMaterialStockRecordDeparture.materialBalance < materialQuantity){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'Balance de la variante del Materialo indicado inecxacto!'
                 });
@@ -259,7 +259,7 @@ module.exports = class MaterialTransferContoller {
                 });
     
                 if (oldMaterialStockRecordEntry == null){
-                    return res.status(400).json({
+                    return res.status(200).json({
                         code: 0,
                         msg: 'No se encontró un balance anterior del material de destino!'
                     });

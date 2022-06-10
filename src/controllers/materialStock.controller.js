@@ -188,7 +188,7 @@ module.exports = class MaterialStockContoller {
             });
             
             if(materialStockExist != null) {
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'El material que intenta registrar ya se encuentra en el almacen indicado!',
                 });

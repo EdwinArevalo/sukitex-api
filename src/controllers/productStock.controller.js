@@ -154,7 +154,7 @@ module.exports = class ProductStockContoller {
             });
             
             if(productStockExist != null) {
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'El producto que intenta registrar ya se encuentra en el almacen indicado!',
                 });

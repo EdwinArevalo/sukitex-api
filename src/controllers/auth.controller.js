@@ -93,12 +93,12 @@ module.exports = class UserContoller {
             const userFound = await User.findOne({ where:{userEmail} });
 
             if(userFound == null){
-                return res.status(400).json({ code: 0, msg: 'Usuario no encontrado!'});
+                return res.status(200).json({ code: 0, msg: 'Usuario no encontrado!'});
             }
 
             const matchPassword = await Encrypt.comparePassword(password, userFound.password );
             if(!matchPassword){
-                return res.status(400).json({ code: 0, msg: 'Contraseña incorrecta!'});
+                return res.status(200).json({ code: 0, msg: 'Contraseña incorrecta!'});
             }
 
             const token = jwt.sign({Id: userFound.userId},process.env.SECRET_KEY,{

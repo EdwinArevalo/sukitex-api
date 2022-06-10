@@ -200,7 +200,7 @@ module.exports = class ProductTransferContoller {
             });
 
             if (oldProductStockRecordDeparture == null){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'No se encontró un balance anterior de la variante del producto de origen!'
                 });
@@ -214,7 +214,7 @@ module.exports = class ProductTransferContoller {
             }
 
             if (oldProductStockRecordDeparture.productBalance < productQuantity){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'Balance de la variante del producto indicado inecxacto!'
                 });
@@ -287,7 +287,7 @@ module.exports = class ProductTransferContoller {
                 });
     
                 if (oldProductStockRecordEntry == null){
-                    return res.status(400).json({
+                    return res.status(200).json({
                         code: 0,
                         msg: 'No se encontró un balance anterior de la variante del producto de destino!'
                     });

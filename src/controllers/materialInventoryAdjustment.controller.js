@@ -144,7 +144,7 @@ module.exports = class MaterialInventoryAdjustmentContoller {
             });
 
             if (oldMaterialStockRecord == null){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'No se encontró un balance anterior del material indicado!'
                 });
@@ -158,7 +158,7 @@ module.exports = class MaterialInventoryAdjustmentContoller {
             }
 
             if (oldMaterialStockRecord.materialBalance < materialQuantity){
-                return res.status(400).json({
+                return res.status(200).json({
                     code: 0,
                     msg: 'Balance del material indicado inecxacto!'
                 });
